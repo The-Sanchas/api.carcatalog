@@ -1,5 +1,6 @@
 <?php
 
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Methods: *');
@@ -41,7 +42,7 @@ if ($method === 'GET')
 }
 elseif ($method === 'POST')
 {
-    if($typ === 'cars')
+    if($typ === 'car')
     {
         addCars($connect, $_POST);
     }
@@ -56,7 +57,7 @@ elseif ($method === 'DELETE')
     {
         if (isset($car_id))
         {
-            deletePost($connect, $car_id);
+            deleteCar($connect, $car_id);
         }
     }
 }

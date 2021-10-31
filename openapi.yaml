@@ -5,18 +5,22 @@ info:
   version: 1.0.0
   title: 'carcatalog'
 servers:
-  - url: http://api.carcatalog/index.php?cars
-    description: 'Для работы с каталогом машин'
-  - url: http://api.carcatalog/index.php?users
+  - url: http://api.carcatalog/cars
+    description: 'Для работы вывода и сортировки машин'
+  - url: http://api.carcatalog/cars
+    description: 'Для добавления машин'
+  - url: http://api.carcatalog/users
     description: 'Для работы с пользователями'
 tags:
   - name: cars
     description: 'Все про машины'
+  - name: car
+    description: 'Добавление машины'
   - name: users
     description: 'Все про пользователей'
 paths:
-  #http://api.carcatalog/api/index.php?cars
-  /:
+  #http://api.carcatalog/cars
+  /cars:
     get:
       tags:
         - cars
@@ -25,21 +29,79 @@ paths:
       responses:
         '200':
           description: ''
-  #api.carcatalog/api/index.php?cars/0
+  #api.carcatalog/cars/0
   /cars/{category_id}:
-    post:
+    get:
       tags:
         - cars
-      operationId: addCars
+      summary: 'Выводит машины в категории'
+      operationId: getCar
       parameters:
-        - in: path
-          name: category_id
-          schema:
-            type: array
-            items:
-              type: integer
-          description: 'Катеогория по которой проводится сортировка '
+        - name: category_id
+          in: path
+          description: ''
           required: true
+          schema:
+            type: integer
+      responses:
+        '404':
+          description: 'Category not found'
+
+  /cars/category_id/{id}:
+    delete:
+      tags:
+        - cars
+      summary: 'Удаляет машину по номеру ее категории и id'
+      operationId: deleteCar
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to return
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'status = true, massage = "Car is deleted"'
+  /car:
+    post:
+      tags:
+        - car
+      summary: 'Добавляет машину'
+      operationId: addCars
       responses:
         '201':
-          description: ''
+          description: 'status = "true"  car_id'
+
+  /users:
+    post:
+      tags:
+        - users
+      summary: 'Регистрация пользователя'
+      operationId: addUsers
+      responses:
+        '201':
+          description: '"status" = true, "massage" = "User added successfully"'
+
+  /users/{email}/{password}:
+    get:
+      tags:
+        - users
+      summary: 'Авторизация'
+      operationId: startSession
+      parameters:
+        - name: email
+          in: path
+          description: 'Ввести почту'
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: path
+          description: 'Введите пароль'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: '"status" = true, "massage" = "User added successfully"'

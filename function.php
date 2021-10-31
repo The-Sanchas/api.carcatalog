@@ -62,7 +62,7 @@ VALUES
    echo json_encode($res);
 }
 
-function deletePost ($connect, $id)
+function deleteCar ($connect, $id)
 {
     mysqli_query($connect, "DELETE FROM `catalog` WHERE  `id` = '$id'");
 
