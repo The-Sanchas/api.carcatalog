@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: 'carcatalog'
+  version: '0.1'
+paths:
+  /api/resource.json:
+    get:
+      operationId: getCars
+      responses:
+        '200':
+          description: 'Чтобы как-то начать ;)'
