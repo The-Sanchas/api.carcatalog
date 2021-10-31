@@ -6,12 +6,15 @@ header('Access-Control-Allow-Methods: *');
 header('Access-Control-Allow-Credentials: true');
 header('Content-type: json/application');
 
+
+
+
 require 'connect.php';
 require 'function.php';
 
-
+$connect = mysqli_connect('localhost', 'root', '', 'carcatalog');
 $method = $_SERVER['REQUEST_METHOD'];
-$typ = $_SERVER['QUERY_STRING'];
+$typ = $_GET['method'];
 $params = explode('/', $typ);
 
 
