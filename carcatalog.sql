@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 30 2021 г., 20:37
+-- Время создания: Ноя 01 2021 г., 12:12
 -- Версия сервера: 8.0.24
 -- Версия PHP: 7.1.33
 
@@ -41,7 +41,13 @@ CREATE TABLE `catalog` (
 INSERT INTO `catalog` (`id`, `brand`, `model`, `category_id`) VALUES
 (1, 'Volkswagen', 'Passat 330 TSI with Star Grill 2021', 0),
 (2, 'Volkswagen', 'ID.3 Pro S 2020', 0),
-(3, 'Mercedes-Benz', 'EQS 580 4MATIC (V297) 2021', 0);
+(13, 'mazda', 'mxc3', 2),
+(17, 'Mercedes-Benz', 'EQS 580 4MATIC (V297) 2021', 1),
+(18, 'Mercedes-Benz', 'Ultimate HGLE Coupe by Hofele Design (C167) 2020', 1),
+(19, 'Hyundai', 'Kona Night Edition (OS) 2020', 2),
+(20, 'Nissan', 'X-Trail', 3),
+(21, 'Tesla', 'Model 3 by EVS Motors on ADV.1 Wheels', 3),
+(22, 'Mitsubishi', 'Lancer Evolution IX Wagon GT-A by JDM', 1);
 
 -- --------------------------------------------------------
 
@@ -62,8 +68,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
 (1, 'Sasha', 'thesanchas2000@gmail.com', '13102000'),
-(3, 'Alex', 'alex322@gmail.com', '123123'),
-(5, 'Denis', 'denis24@gmail.com', '123456');
+(3, 'Alex', 'alex322@gmail.com', '123123');
 
 --
 -- Индексы сохранённых таблиц
@@ -89,13 +94,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `catalog`
 --
 ALTER TABLE `catalog`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
